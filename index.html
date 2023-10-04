@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather forecast App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="weather-app-container">
+      <div class="interaction-panel">
+        <div class="left">
+          <button class="temperature-toggle">
+            <i class="fa-solid fa-temperature-full"></i>
+          </button>
+          <button class="gif-generator">
+            <i class="fa-solid fa-image"></i>
+          </button>
+          <div class="current-pos">
+            <span><i class="fa-solid fa-location-dot"></i></span>
+            <span>논현동, 서울</span>
+          </div>
+          <div class="search-bar">
+            <div>
+              <input type="text" placeholder="Search city..." />
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+        </div>
+        <div class="right">
+          <i class="fa-solid fa-clock"></i>
+          <span class="clock">14:23</span>
+        </div>
+      </div>
+      <div class="weather">
+        <div class="forecast">
+          <div class="top">
+            <span>Weather</span>
+            <span>Forecast</span>
+          </div>
+          <div class="bottom">
+            <div class="five-days">
+              <div class="today">
+                <li>Monday</li>
+                <li><img src="" alt="" /></li>
+                <li>10'</li>
+                <li>sunrise:</li>
+                <li>sunset:</li>
+              </div>
+              <ul>
+                <li>Tue</li>
+                <li><img src="" alt="" /></li>
+                <li>10'</li>
+              </ul>
+              <ul>
+                <li>Tue</li>
+                <li><img src="" alt="" /></li>
+                <li>10'</li>
+              </ul>
+              <ul>
+                <li>Tue</li>
+                <li><img src="" alt="" /></li>
+                <li>10'</li>
+              </ul>
+              <ul>
+                <li>Tue</li>
+                <li><img src="" alt="" /></li>
+                <li>10'</li>
+              </ul>
+              <ul>
+                <li>Tue</li>
+                <li><img src="" alt="" /></li>
+                <li>10'</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="detail">
+          <div class="top">Detail</div>
+
+          <div class="bottom">
+            <div class="feels-like-info">
+              <div class="icon">
+                <i class="fa-solid fa-temperature-high"></i>
+                <span>Feels Like</span>
+              </div>
+              <span>15o</span>
+            </div>
+            <div class="humidity-info">
+              <div class="icon">
+                <i class="fa-solid fa-cloud-rain"></i>
+                <span>Chance of Rain</span>
+              </div>
+              <span>15o</span>
+            </div>
+            <div class="rain-chance-info">
+              <div class="icon">
+                <i class="fa-solid fa-droplet"></i>
+                <span>Humidity</span>
+              </div>
+              <span>15o</span>
+            </div>
+            <div class="wind-speed-info">
+              <div class="icon">
+                <i class="fa-solid fa-wind"></i>
+                <span>Wind Speed</span>
+              </div>
+              <span>15o</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="global-map-gif-container">
+        <div class="global-map">
+          <h2>Global map</h2>
+          <div class="map">dw</div>
+        </div>
+        <div class="gif">
+          <h3>Gif</h3>
+          <img src="./logo.png" alt="" />
+        </div>
+      </div>
+    </div>
+    <script src="./js/clock.js" type="module"></script>
+  </body>
+</html>
