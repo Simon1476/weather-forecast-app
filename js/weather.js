@@ -12,7 +12,6 @@ const getCoords = async (city = "Seoul") => {
   const {
     coord: { lat, lon },
   } = result;
-
   return { lat, lon };
 };
 
@@ -43,4 +42,31 @@ const getTodayWeather = async (lat, lon, unit = "metric") => {
   return weatherData;
 };
 
+const getforeCast = async (lat, lon, unit = "metric") => {
+  const response = await fetch(
+    `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}4&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&timezone=Asia%2FTokyo`
+  );
+  const result = await response.json();
+  console.log(result);
+  const {
+    daily: {
+      temperature_2m_max: maxtmp,
+      temperature_2m_min: mintmp,
+      time,
+      weathercode,
+    },
+  } = result;
+
+  const forecastData = {
+    maxtmp,
+    mintmp,
+    time,
+    weathercode,
+  };
+
+  return forecastData;
+};
+
 getCoords();
+
+export { getCoords, getTodayWeather, getforeCast };
