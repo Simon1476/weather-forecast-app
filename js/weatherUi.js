@@ -29,4 +29,19 @@ const showWeatherData = async () => {
   });
 };
 
+const getWeekdayFromDate = (dateString) => {
+  const dayNames = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const date = new Date(dateString);
+  const dayIndex = date.getDay();
+  return dayNames[dayIndex];
+};
+
 showWeatherData();
