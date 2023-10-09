@@ -1,19 +1,17 @@
 import * as api from "./weather.js";
 import weatherImages from "./constans.js";
 
-const showWeatherData = async () => {
+const displayWeatherData = async () => {
   const { lat, lon } = await api.getCoords();
-  const weatherData = await api.getforeCast(lat, lon);
-  console.log(weatherData);
+  const forecastData = await api.getforeCast(lat, lon);
 
   const ulElements = document.querySelectorAll("ul");
   ulElements.forEach((ul, index) => {
     if (index <= ulElements.length) {
-      const maxtmp = weatherData.maxtmp[index];
-      const mintmp = weatherData.mintmp[index];
-      const weatherCode = weatherData.weathercode[index];
-      const dateString = weatherData.time[index];
-
+      const maxtmp = forecastData.maxtmp[index];
+      const mintmp = forecastData.mintmp[index];
+      const weatherCode = forecastData.weathercode[index];
+      const dateString = forecastData.time[index];
       const weekday = getWeekdayFromDate(dateString);
 
       const dayElement = ul.querySelector(".day");
@@ -44,4 +42,4 @@ const getWeekdayFromDate = (dateString) => {
   return dayNames[dayIndex];
 };
 
-showWeatherData();
+displayWeatherData();
