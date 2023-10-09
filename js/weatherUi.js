@@ -1,6 +1,6 @@
 import * as api from "./weather.js";
 import weatherImages from "./constans.js";
-
+import { createGifImage } from "./gifs.js";
 const displayWeatherData = async () => {
   const { lat, lon } = await api.getCoords();
   const forecastData = await api.getforeCast(lat, lon);
@@ -21,8 +21,8 @@ const displayWeatherData = async () => {
       // Update the temperature values
       dayElement.textContent = weekday;
       ulElement.setAttribute("src", weatherImages[weatherCode]);
-      maxTempElement.textContent = parseInt(maxtmp);
-      minTempElement.textContent = parseInt(mintmp);
+      maxTempElement.textContent = parseInt(maxtmp) + "°";
+      minTempElement.textContent = parseInt(mintmp) + "°";
     }
   });
 };
@@ -54,11 +54,23 @@ const displayTodayDetail = async () => {
   const sunset = document.querySelector(".sunset-info > span");
   const windSpeed = document.querySelector(".wind-speed-info > span");
 
-  feelsLike.textContent = parseInt(weatherData.feelsLike);
-  humidity.textContent = weatherData.humidity;
-  sunset.textContent = weatherData.sunset;
-  windSpeed.textContent = weatherData.windSpeed;
+  feelsLike.textContent = parseInt(weatherData.feelsLike) + "°";
+  humidity.textContent = weatherData.humidity + "%";
+  sunset.textContent = convertTimestamp(weatherData.sunset);
+  windSpeed.textContent = weatherData.windSpeed + "m/s";
 };
+
+function convertTimestamp(sunsetTimestamp) {
+  const sunsetDate = new Date(sunsetTimestamp * 1000); // Convert to milliseconds
+
+  const hours = String(sunsetDate.getHours()).padStart(2, "0");
+  const minutes = String(sunsetDate.getMinutes()).padStart(2, "0");
+  const seconds = String(sunsetDate.getSeconds()).padStart(2, "0");
+
+  const formattedTime = `${hours}:${minutes}:${seconds}`;
+
+  return formattedTime;
+}
 
 displayTodayDetail();
 displayWeatherData();
