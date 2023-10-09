@@ -42,4 +42,23 @@ const getWeekdayFromDate = (dateString) => {
   return dayNames[dayIndex];
 };
 
+const displayTodayDetail = async () => {
+  const { lat, lon } = await api.getCoords();
+  const weatherData = await api.getTodayWeather(lat, lon);
+  console.log(weatherData);
+  const location = document.querySelector(".location");
+  location.textContent = weatherData.cityName;
+
+  const feelsLike = document.querySelector(".feels-like-info > span");
+  const humidity = document.querySelector(".humidity-info > span");
+  const sunset = document.querySelector(".sunset-info > span");
+  const windSpeed = document.querySelector(".wind-speed-info > span");
+
+  feelsLike.textContent = parseInt(weatherData.feelsLike);
+  humidity.textContent = weatherData.humidity;
+  sunset.textContent = weatherData.sunset;
+  windSpeed.textContent = weatherData.windSpeed;
+};
+
+displayTodayDetail();
 displayWeatherData();
