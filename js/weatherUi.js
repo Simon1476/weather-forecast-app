@@ -2,6 +2,19 @@ import * as api from "./weather.js";
 import weatherImages from "./constans.js";
 import { getGifUrl } from "./gifs.js";
 
+const searchBar = document.querySelector(".search-bar input");
+searchBar.addEventListener("keydown", async (e) => {
+  if (e.keyCode === 13) {
+    const searchCity = e.target.value;
+
+    await displayWeatherData(searchCity);
+    await displayTodayDetail(searchCity);
+    await displayGifImage(searchCity);
+
+    searchBar.value = "";
+  }
+});
+
 const displayWeatherData = async (cityName = "Seoul") => {
   const { lat, lon } = await api.getCoords(cityName);
   const forecastData = await api.getforeCast(lat, lon);
