@@ -1,8 +1,9 @@
 import * as api from "./weather.js";
 import weatherImages from "./constans.js";
-import { createGifImage } from "./gifs.js";
-const displayWeatherData = async () => {
-  const { lat, lon } = await api.getCoords();
+import { getGifUrl } from "./gifs.js";
+
+const displayWeatherData = async (cityName = "Seoul") => {
+  const { lat, lon } = await api.getCoords(cityName);
   const forecastData = await api.getforeCast(lat, lon);
 
   const ulElements = document.querySelectorAll("ul");
@@ -42,8 +43,8 @@ const getWeekdayFromDate = (dateString) => {
   return dayNames[dayIndex];
 };
 
-const displayTodayDetail = async () => {
-  const { lat, lon } = await api.getCoords();
+const displayTodayDetail = async (cityName = "Seoul") => {
+  const { lat, lon } = await api.getCoords(cityName);
   const weatherData = await api.getTodayWeather(lat, lon);
   console.log(weatherData);
   const location = document.querySelector(".location");
@@ -72,5 +73,12 @@ function convertTimestamp(sunsetTimestamp) {
   return formattedTime;
 }
 
+const displayGifImage = async (searchTerm = "Seoul") => {
+  const url = await getGifUrl(searchTerm);
+  const gifImage = document.querySelector(".gif-image");
+  gifImage.src = url;
+};
+
 displayTodayDetail();
 displayWeatherData();
+displayGifImage();
