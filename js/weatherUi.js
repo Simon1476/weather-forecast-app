@@ -1,7 +1,7 @@
 import * as api from "./weather.js";
 import weatherImages from "./constans.js";
 import { getGifUrl } from "./gifs.js";
-
+import { getWeekdayFromDate, convertTimestamp } from "./utils.js";
 const searchBar = document.querySelector(".search-bar input");
 searchBar.addEventListener("keydown", async (e) => {
   if (e.keyCode === 13) {
@@ -41,21 +41,6 @@ const displayWeatherData = async (cityName = "Seoul") => {
   });
 };
 
-const getWeekdayFromDate = (dateString) => {
-  const dayNames = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  const date = new Date(dateString);
-  const dayIndex = date.getDay();
-  return dayNames[dayIndex];
-};
-
 const displayTodayDetail = async (cityName = "Seoul") => {
   const { lat, lon } = await api.getCoords(cityName);
   const weatherData = await api.getTodayWeather(lat, lon);
@@ -74,18 +59,6 @@ const displayTodayDetail = async (cityName = "Seoul") => {
   windSpeed.textContent = weatherData.windSpeed + "m/s";
 };
 
-function convertTimestamp(sunsetTimestamp) {
-  const sunsetDate = new Date(sunsetTimestamp * 1000); // Convert to milliseconds
-
-  const hours = String(sunsetDate.getHours()).padStart(2, "0");
-  const minutes = String(sunsetDate.getMinutes()).padStart(2, "0");
-  const seconds = String(sunsetDate.getSeconds()).padStart(2, "0");
-
-  const formattedTime = `${hours}:${minutes}:${seconds}`;
-
-  return formattedTime;
-}
-
 const displayGifImage = async (searchTerm = "Seoul") => {
   const url = await getGifUrl(searchTerm);
   const gifImage = document.querySelector(".gif-image");
@@ -95,3 +68,4 @@ const displayGifImage = async (searchTerm = "Seoul") => {
 displayTodayDetail();
 displayWeatherData();
 displayGifImage();
+api.getWeatherMap();
