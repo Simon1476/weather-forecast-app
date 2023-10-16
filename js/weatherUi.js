@@ -14,10 +14,19 @@ searchBar.addEventListener("keydown", async (e) => {
     searchBar.value = "";
   }
 });
+let isFahrenheit = false; // Default to Celsius
+const temperatureToggleBtn = document.querySelector(".temperature-toggle");
+const changeTempUnit = () => {
+  isFahrenheit = !isFahrenheit; // Toggle the state when the button is clicked
 
-const displayWeatherData = async (cityName = "Seoul") => {
+  displayWeatherData("Seoul", isFahrenheit);
+};
+
+temperatureToggleBtn.addEventListener("click", changeTempUnit);
+
+const displayWeatherData = async (cityName = "Seoul", isFahrenheit = false) => {
   const { lat, lon } = await api.getCoords(cityName);
-  const forecastData = await api.getforeCast(lat, lon);
+  const forecastData = await api.getforeCast(lat, lon, isFahrenheit);
 
   const ulElements = document.querySelectorAll("ul");
   ulElements.forEach((ul, index) => {
@@ -44,7 +53,6 @@ const displayWeatherData = async (cityName = "Seoul") => {
 const displayTodayDetail = async (cityName = "Seoul") => {
   const { lat, lon } = await api.getCoords(cityName);
   const weatherData = await api.getTodayWeather(lat, lon);
-  console.log(weatherData);
   const location = document.querySelector(".location");
   location.textContent = weatherData.cityName;
 
