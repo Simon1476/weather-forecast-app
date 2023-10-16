@@ -11,6 +11,10 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
@@ -25,7 +29,7 @@
           </button>
           <div class="current-pos">
             <span><i class="fa-solid fa-location-dot"></i></span>
-            <span>논현동, 서울</span>
+            <span class="location"></span>
           </div>
           <div class="search-bar">
             <div>
@@ -47,37 +51,43 @@
           </div>
           <div class="bottom">
             <div class="five-days">
-              <div class="today">
-                <li>Monday</li>
-                <li><img src="" alt="" /></li>
-                <li>10'</li>
-                <li>sunrise:</li>
-                <li>sunset:</li>
-              </div>
               <ul>
-                <li>Tue</li>
-                <li><img src="" alt="" /></li>
-                <li>10'</li>
+                <li class="day">Monday</li>
+                <li><img class="weather-img" src="" alt="" /></li>
+                <li class="maxtmp">10'</li>
+                <li class="mintmp">10'</li>
               </ul>
               <ul>
-                <li>Tue</li>
-                <li><img src="" alt="" /></li>
-                <li>10'</li>
+                <li class="day">Tue</li>
+                <li><img class="weather-img" src="" alt="" /></li>
+                <li class="maxtmp">10'</li>
+                <li class="mintmp">10'</li>
               </ul>
               <ul>
-                <li>Tue</li>
-                <li><img src="" alt="" /></li>
-                <li>10'</li>
+                <li class="day">Wed</li>
+                <li><img class="weather-img" src="" alt="" /></li>
+                <li class="maxtmp">10'</li>
+                <li class="mintmp">10'</li>
               </ul>
               <ul>
-                <li>Tue</li>
-                <li><img src="" alt="" /></li>
-                <li>10'</li>
+                <li class="day">Thu</li>
+                <li><img class="weather-img" src="" alt="" /></li>
+                <li class="maxtmp">10'</li>
+                <li class="mintmp">10'</li>
               </ul>
               <ul>
-                <li>Tue</li>
-                <li><img src="" alt="" /></li>
-                <li>10'</li>
+                <li class="day">Fri</li>
+                <li><img class="weather-img" src="" alt="" /></li>
+                <li class="maxtmp">10'</li>
+                <li class="mintmp">10'</li>
+              </ul>
+              <ul>
+                <li class="day">Sat</li>
+                <li>
+                  <img class="weather-img" src="" alt="" />
+                </li>
+                <li class="maxtmp">10'</li>
+                <li class="mintmp">10'</li>
               </ul>
             </div>
           </div>
@@ -95,15 +105,15 @@
             </div>
             <div class="humidity-info">
               <div class="icon">
-                <i class="fa-solid fa-cloud-rain"></i>
-                <span>Chance of Rain</span>
+                <i class="fa-solid fa-droplet"></i>
+                <span>Humidity</span>
               </div>
               <span>15o</span>
             </div>
-            <div class="rain-chance-info">
+            <div class="sunset-info">
               <div class="icon">
-                <i class="fa-solid fa-droplet"></i>
-                <span>Humidity</span>
+                <i class="fa-solid fa-sun"></i>
+                <span>Sunset</span>
               </div>
               <span>15o</span>
             </div>
@@ -124,10 +134,11 @@
         </div>
         <div class="gif">
           <h3>Gif</h3>
-          <img src="./logo.png" alt="" />
+          <img class="gif-image" src="./logo.png" alt="" />
         </div>
       </div>
     </div>
     <script src="./js/clock.js" type="module"></script>
+    <script src="./js/weatherUi.js" type="module"></script>
   </body>
 </html>

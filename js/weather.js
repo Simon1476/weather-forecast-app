@@ -17,7 +17,6 @@ const getTodayWeather = async (lat, lon, unit = "metric") => {
     `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=${unit}`
   );
   const result = await response.json();
-
   const {
     main: { feels_like, humidity },
     name,
@@ -36,10 +35,11 @@ const getTodayWeather = async (lat, lon, unit = "metric") => {
   return weatherData;
 };
 
-const getforeCast = async (lat, lon, unit = "metric") => {
-  const response = await fetch(
-    `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}4&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&timezone=Asia%2FTokyo`
-  );
+const getforeCast = async (lat, lon, isFahrenheit = false) => {
+  const url = isFahrenheit
+    ? `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&temperature_unit=fahrenheit&timezone=Asia%2FTokyo`
+    : `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&timezone=Asia%2FTokyo`;
+  const response = await fetch(url);
   const result = await response.json();
   const {
     daily: {
@@ -60,6 +60,13 @@ const getforeCast = async (lat, lon, unit = "metric") => {
   return forecastData;
 };
 
-getCoords();
+const getWeatherMap = async () => {
+  const response = await fetch(
+    `https://tile.openweathermap.org/map/temp_new/4/1/6.png?appid=${API_KEY}
+    `
+  );
+  return response;
+};
 
-export { getCoords, getTodayWeather, getforeCast };
+getWeatherMap();
+export { getCoords, getTodayWeather, getforeCast, getWeatherMap };

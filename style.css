@@ -1,12 +1,18 @@
 @import url("./css/reset.css");
-
+:root {
+  
+  /* size */
+  --base-space: 2rem;
+}
 body {
-  background-color: #2E2E2E;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   color: #FEFEFE;
+  background-color: #2E2E2E;
+
+  font-family: 'Lora', serif;
 }
 
 
@@ -21,22 +27,19 @@ body {
   background-color: #111014;
 }
 
-img{
-  width: 100%;
-  height: 100%;
-}
+
 
 .interaction-panel {
   display: grid;
   grid-template-columns: 3fr 1fr;
   grid-column: 1/3;
-  gap: 2rem;
+  gap: var(--base-space);
 }
 
 .interaction-panel .left{
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: var(--base-space);
 }
 
 .interaction-panel .left button {
@@ -52,12 +55,14 @@ img{
 
 .search-bar{
   position: relative;
+  
   display: flex;
+  justify-content: flex-end;
   align-items: center;
   flex: 1;
+
   box-sizing: border-box;
-  color: 626262;
-  justify-content: flex-end;
+  color: #626262;
 }
 
 .search-bar > div{
@@ -70,6 +75,9 @@ img{
   padding-inline-start: 30px;
   height: 40px;
 
+  font-family: 'Lora', serif;
+  
+  color: white;
   background-color: #1E1E1E;
   border: none;
   border-radius: 10px;
@@ -107,7 +115,7 @@ img{
   grid-column: 1/3;
   display: grid;
   grid-template-columns: 3fr 1fr;
-  gap: 2rem;
+  gap: var(--base-space);
 }
 
 .weather .forecast {
@@ -121,39 +129,38 @@ img{
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: var(--base-space);
 
   background-color: #1B1B1D;
 }
-
 
 .five-days {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 1rem;
   
+  font-size: 18px;
 }
 
-.five-days .today img{
-  width: 200px;
-}
 .five-days ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
 
+  padding: 1rem 0;
   background-color: #1B1B1D;
 }
 
-.five-days img {
+.five-days img{
+  width: 80%;
+  height: 80%;
 }
 
 .detail {
   display: grid;
   gap: 1rem;
   grid-template-rows: auto 1fr;
-  background-color: pink;
 }
 
 .detail .bottom {
@@ -162,7 +169,13 @@ img{
   grid-template-rows: 1fr 1fr;
   justify-items: center;
   align-items: center;
-  gap: 2rem;
+  gap: var(--base-space);
+}
+
+.detail .icon {
+  color: #BBD7EC;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
 .bottom > div {
@@ -174,11 +187,16 @@ img{
 
   display: grid;
   grid-template-columns: 3fr 1fr;
-  gap: 2rem;
+  gap: var(--base-space);
 }
 
 .global-map .map {
   width: 100%;
-  height: 100%;
+  height: 90%;
   background-color: yellow;
+}
+
+.gif-image {
+  width: 100%;
+  height: 90%;
 }
