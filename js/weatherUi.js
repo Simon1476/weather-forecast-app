@@ -1,6 +1,6 @@
 import * as api from "./weather.js";
 import weatherImages from "./constans.js";
-import { getGifUrl } from "./gifs.js";
+import { getGifUrl, saveGifImage } from "./gifs.js";
 import { getWeekdayFromDate, convertTimestamp } from "./utils.js";
 const searchBar = document.querySelector(".search-bar input");
 searchBar.addEventListener("keydown", async (e) => {
@@ -24,6 +24,8 @@ const changeTempUnit = () => {
 
 temperatureToggleBtn.addEventListener("click", changeTempUnit);
 
+const gifImage = document.querySelector(".gif-generator");
+gifImage.addEventListener("click", saveGifImage);
 const displayWeatherData = async (cityName = "Seoul", isFahrenheit = false) => {
   const { lat, lon } = await api.getCoords(cityName);
   const forecastData = await api.getforeCast(lat, lon, isFahrenheit);

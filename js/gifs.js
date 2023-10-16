@@ -10,4 +10,22 @@ const getGifUrl = async (searchTerm = "Seoul") => {
   return url;
 };
 
-export { getGifUrl };
+const saveGifImage = () => {
+  const gifImage = document.querySelector(".gif-image");
+  const gifImageUrl = gifImage.getAttribute("src");
+
+  // Create an invisible anchor element
+  const downloadLink = document.createElement("a");
+  console.log(downloadLink);
+  downloadLink.href = gifImageUrl;
+  downloadLink.target = "_blank";
+
+  // Append the anchor to the document and trigger the click event
+  document.body.appendChild(downloadLink);
+  downloadLink.click();
+
+  // Remove the anchor element from the document
+  document.body.removeChild(downloadLink);
+};
+
+export { getGifUrl, saveGifImage };
