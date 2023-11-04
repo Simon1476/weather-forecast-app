@@ -1,5 +1,8 @@
 # weather-forecast-app
 
+## [Live Preview](https://simon1476.github.io/weather-forecast-app/)
+![image](https://github.com/Simon1476/weather-forecast-app/assets/77772647/12d05d47-e0c5-4dd4-9950-cf915ac78834)
+
 ## Description
 * Buils as part of The Odin Project 
 * The purpose of the project is to display weather data and gif image by requesting an API using async and wait.
